@@ -16,13 +16,11 @@ int main(void)
   
 {
   
-  char ex;
-  
-
+  char ex; 
   
   for (ex = 'a'; ex <= 'z'; ex++)
     
-    {
+   {
       
       if (ex != 'e' && ex != 'q')
 	
