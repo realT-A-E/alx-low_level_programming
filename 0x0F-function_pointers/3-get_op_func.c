@@ -2,67 +2,34 @@
 #include <stdlib.h>
 #include "3-calc.h"
 /**
- * op_add - Struct op
+ * get_op_func - identify function
+ * @s: funct
  *
- * @a: The operator
- * @b: The function associated
  * Return: int
- */
-int op_add(int a, int b)
-{
-	return (a + b);
-}
-/**
- * op_sub - Struct op
  *
- * @a: The operator
- * @b: The function associated
- * Return: int
- */
-int op_sub(int a, int b)
+ **/
+int (*get_op_func(char *s))(int, int)
 {
-	return (a - b);
-}
-/**
- * op_mul - Struct op
- *
- * @a: The operator
- * @b: The function associated
- * Return: int
- */
-int op_mul(int a, int b)
-{
-	return (a * b);
-}
-/**
- * op_div - Struct op
- *
- * @a: The operator
- * @b: The function associated
- * Return: int
- */
-int op_div(int a, int b)
-{
-	if (b == 0)
+	op_t ops[] = {
+		{"+", op_add},
+		{"-", op_sub},
+		{"*", op_mul},
+		{"/", op_div},
+		{"%", op_mod},
+		{NULL, NULL}
+	};
+	int i;
+
+	i = 0;
+	while (i < 5)
 	{
-		printf("Error\n");
-		exit(100);
+		if (s[0] == ops[i].op[0])
+		{
+			return (ops[i].f);
+		}
+		i++;
 	}
-	return (a / b);
-}
-/**
- * op_mod - Struct op
- *
- * @a: The operator
- * @b: The function associated
- * Return: int
- */
-int op_mod(int a, int b)
-{
-	if (b == 0)
-	{
-		printf("Error\n");
-		exit(100);
-	}
-	return (a % b);
+
+
+	return (NULL);
 }
